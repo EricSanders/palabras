@@ -2,3 +2,9 @@
 {% if message %}
 {{ message }}
 {% endif %}
+
+<form action="/transcriber/transcribe/" method="post">
+{% csrf_token %}
+<input type="text" name="userid" />
+<input type="submit" value="OK" />
+</form>

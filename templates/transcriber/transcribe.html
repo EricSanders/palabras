@@ -1,5 +1,22 @@
-session: {{session_id}}<br>
-user: {{user_id}}<br>
-speaker: {{speaker_id}}<br>
-speakersession: {{speakersession_id}}<br>
-word: {{word_id}}<br>
+<html>
+user: {{userid}}<br>
+id: {{ws.id}}<br>
+word: {{ws.wordid}}<br>
+speaker: {{ws.speakerid}}<br>
+datetime: {{ws.datetime}}<br>
+audiofile: {{MEDIA_ROOT}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav<br>
+
+<audio id={{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}} controls autoplay>
+  <source src="{{MEDIA_ROOT}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav">
+</audio>
+
+<form action="/transcriber/transcribe/" method="post">
+{% csrf_token %}
+<input type="hidden" name="userid" value="{{userid}}" />
+<input type="hidden" name="wsid" value="{{ws.id}}" />
+<input type="text" name="transcription" autofocus />
+<input type="submit" value="OK" />
+</form>
+
+
+</html>

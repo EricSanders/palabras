@@ -6,14 +6,18 @@ class WordOriginal(models.Model):
     def __unicode__(self):
         return self.word
 
+class WordSpoken(models.Model):
+    wordid = models.IntegerField()
+    speakerid = models.CharField(max_length=20)
+    datetime = models.CharField(max_length=20)
+    nrtranscribed = models.IntegerField()
+    def __unicode__(self):
+        return self.experttranscription
+
 class WordTranscription(models.Model):
-    wordoriginal = models.ForeignKey(WordOriginal)
-    transcription = models.CharField(max_length=20)
-    speakerid = models.IntegerField()
-    speakersessionid = models.IntegerField()
+    wordspokenid = models.IntegerField()
     userid = models.IntegerField()
-    sessionid = models.IntegerField()
-    begintime = models.DateTimeField()
-    endtime = models.DateTimeField()
+    transcription = models.CharField(max_length=20)
+    datetime = models.CharField(max_length=40)
     def __unicode__(self):
         return self.transcription
