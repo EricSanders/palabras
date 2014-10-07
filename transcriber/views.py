@@ -42,9 +42,10 @@ def transcribe(request):
         
     except:
         # niets aan de hand
-        return render_to_response('transcriber/index.html', {
-            'message': "id or transcription not received",
-            }, context_instance=RequestContext(request))
+        pass
+#        return render_to_response('transcriber/index.html', {
+#            'message': "id or transcription not received",
+#            }, context_instance=RequestContext(request))
 
     wtlist = WordTranscription.objects.all().filter(userid=userid)
     if wtlist:
