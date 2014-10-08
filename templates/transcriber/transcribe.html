@@ -4,10 +4,10 @@ id: {{ws.id}}<br>
 word: {{ws.wordid}}<br>
 speaker: {{ws.speakerid}}<br>
 datetime: {{ws.datetime}}<br>
-audiofile: {{MEDIA_ROOT}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav<br>
+audiofile: {{STATIC_URL}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav<br>
 
 <audio id={{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}} controls autoplay>
-  <source src="{{MEDIA_ROOT}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav">
+  <source src="{{STATIC_URL}}{{ws.speakerid}}/{{ws.speakerid}}_{{ws.wordid}}_{{ws.datetime}}.wav">
 </audio>
 
 <form action="/transcriber/transcribe/" method="post">
